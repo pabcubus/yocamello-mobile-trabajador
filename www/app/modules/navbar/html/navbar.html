@@ -1,0 +1,67 @@
+<md-toolbar class="md-warn">
+	<div class="md-toolbar-tools">
+		<md-button ng-click="ac.toggleUserNav()" class="md-icon-button" aria-label="Settings">
+			<md-icon
+				class="material-icons">
+				menu
+			</md-icon>
+		</md-button>
+
+		<span flex></span>
+
+		<h3 flex>
+			YoCamello
+		</h3>
+
+		<span flex></span>
+		<img class="material-icons" src="app/images/icon_white.png">
+	</div>
+</md-toolbar>
+
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp" md-component-id="user-nav">
+
+	<md-content layout-padding>
+		<div layout="row">
+			<div flex layout="column">
+				<h2 class="md-subhead">Menu</h2>
+				<md-button ui-sref="home" layout="row" ng-click="ac.closeSideNav()" class="md-raised md-warn">
+					<md-icon
+						flex="10"
+						class="material-icons">
+						home
+					</md-icon>
+					<label flex>Inicio</label>
+					<div flex="10"></div>
+				</md-button>
+				<md-button ui-sref="perfil" layout="row" ng-click="ac.closeSideNav()" class="md-raised md-warn">
+					<md-icon
+						flex="10"
+						class="material-icons">
+						account_circle
+					</md-icon>
+					<label flex>Mi Perfil</label>
+					<div flex="10"></div>
+				</md-button>
+				<md-button layout="row" class="md-raised md-warn">
+					<md-icon
+						flex="10"
+						class="material-icons">
+						beenhere
+					</md-icon>
+					<label flex>Mis Solicitudes</label>
+					<div flex="10"></div>
+				</md-button>
+				<md-button layout="row" ng-click="ac.logout()" class="md-raised md-warn">
+					<md-icon
+						flex="10"
+						class="material-icons">
+						arrow_back
+					</md-icon>
+					<label flex>Salir</label>
+					<div flex="10"></div>
+				</md-button>
+			</div>
+		</div>
+	</md-content>
+
+</md-sidenav>

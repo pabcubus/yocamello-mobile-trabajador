@@ -1,0 +1,32 @@
+<div flex layout="column" class="home">
+	<div flex layout="column" class="home-links">
+		<h3 class="home-title">
+			Que necesitas hoy?
+		</h3>
+		<md-menu
+			class="home-link"
+			ng-repeat="menu in hc.menuOptions">
+			<a
+				class="home-link-btn"
+				ng-click="hc.openMenu($mdMenu, $event)">
+				{{menu.text}}
+
+				<p>
+					{{menu.description}}
+				</p>
+			</a>
+			<md-menu-content width="4">
+				<md-menu-item ng-repeat="subitem in menu.submenu">
+					<md-button ng-click="hc.selectOption()">
+						{{subitem.text}}
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+	</div>
+
+	<trabajador
+		trabajador="hc.currentTrabajador"
+		on-accept="hc.acceptTrabajador()">
+	</trabajador>
+</div>

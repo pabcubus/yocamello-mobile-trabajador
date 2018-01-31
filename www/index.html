@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>..::: YO CAMELLO :::..</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="libs/material-design-icons/material-icons.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="bower_components/angular-jk-rating-stars/dist/jk-rating-stars.min.css">
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+
+	<link href="app/styles/shared.min.css" rel="stylesheet">
+	<link href="app/styles/worker.min.css" rel="stylesheet">
+	<link href="app/styles/login.min.css" rel="stylesheet">
+	<link href="app/styles/home.min.css" rel="stylesheet">
+	<link href="app/styles/estado.min.css" rel="stylesheet">
+	<link href="app/styles/perfil.min.css" rel="stylesheet">
+	<link href="app/styles/terminado.min.css" rel="stylesheet">
+</head>
+
+<body
+	ng-controller="AppController as ac"
+	layout="column"
+	ng-cloak>
+
+	<div flex layout="column" ng-include="'app/app_frame.html'"></div>
+
+	<script type="text/javascript" data-main="app/main" src="bower_components/requirejs/require.js"></script>
+
+	<loading></loading>
+</body>
+
+</html>

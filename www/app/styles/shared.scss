@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-Regular.ttf);
+}
+
+* {
+	font-family: Montserrat;
+}
+
+input{
+	&.yc-input{
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		padding: 10px;
+		margin: 5px;
+	}
+}
+
+.main-view{
+	.main-view-container{
+		overflow: auto;
+	}
+}
+
+.yc-center-text{
+	text-align: center;
+}

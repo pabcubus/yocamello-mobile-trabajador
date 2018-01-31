@@ -1,0 +1,10 @@
+/platforms
+/plugins
+/node_modules
+/www/bower_components
+/www/node_modules
+/www/**/.sass-cache
+/www/**/*.css
+/.gradle
+.DS_Store
+package-lock.json
