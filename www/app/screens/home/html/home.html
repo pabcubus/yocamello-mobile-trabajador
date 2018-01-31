@@ -1,32 +1,17 @@
-<div flex layout="column" class="home">
-	<div flex layout="column" class="home-links">
-		<h3 class="home-title">
-			Que necesitas hoy?
-		</h3>
-		<md-menu
-			class="home-link"
-			ng-repeat="menu in hc.menuOptions">
-			<a
-				class="home-link-btn"
-				ng-click="hc.openMenu($mdMenu, $event)">
-				{{menu.text}}
-
-				<p>
-					{{menu.description}}
-				</p>
-			</a>
-			<md-menu-content width="4">
-				<md-menu-item ng-repeat="subitem in menu.submenu">
-					<md-button ng-click="hc.selectOption()">
-						{{subitem.text}}
-					</md-button>
-				</md-menu-item>
-			</md-menu-content>
-		</md-menu>
+<div flex layout="column" class="home" layout-padding>
+	<div layout="column" layout-align="start center">
+		<md-switch class="yc-md-switch-big md-warn" ng-model="hc.inService">
+			{{hc.inService ? 'Estas en servicio!' : 'Estas inhabilitado...'}}
+		</md-switch>
 	</div>
 
-	<trabajador
-		trabajador="hc.currentTrabajador"
-		on-accept="hc.acceptTrabajador()">
-	</trabajador>
+	<md-list flex>
+		<md-list-item class="md-3-line" ng-repeat="serv in hc.services" ng-click="hc.selectSolicitud(serv)">
+			<div class="md-list-item-text" layout="column">
+				<h3>{{ serv.tipo }}</h3>
+			</div>
+		</md-list-item>
+	</md-list>
+
+	<solicitud solicitud="hc.currentService"></solicitud>
 </div>

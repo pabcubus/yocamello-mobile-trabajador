@@ -8,50 +8,42 @@
 			var HomeController = function($state, $scope, $timeout, MenuService, UIService, SolicitudService) {
 				var vm					= this;
 
-				vm.menuOptions			= MenuService.getMenuOptions();
+				vm.inService			= true;
+				vm.services				= [];
+				vm.currentService		= {};
 
+				vm.selectSolicitud		= selectSolicitud;
 
-				vm.openMenu				= openMenu;
-				vm.selectOption			= selectOption;
-				vm.acceptTrabajador		= acceptTrabajador
+				$scope.$on('$viewContentLoaded', function(){
+					_init();
+				})
 
-				vm.currentTrabajador	= {};
-
-				onInit();
-
-				function onInit(){
-					vm.currentTrabajador	= {
-						name: 'Pablo Bassil',
-						stars: 4
-					};
-				}
-
-				function openMenu($mdMenu, ev) {
-					$mdMenu.open(ev);
-				};
-
-				function selectOption() {
+				function _init() {
 					UIService.showLoadingScreen('Buscando...');
 
-					SolicitudService.getTrabajador()
-						.then(function(worker){
+					SolicitudService.getServicesAvailable()
+						.then(function(data){
+							vm.services = data;
+						})
+						.catch()
+						.finally(function(){
 							UIService.hideLoadingScreen();
-
-							vm.currentTrabajador = {
-								name: worker.name,
-								stars: worker.stars
-							}
-
-							$timeout(function(){
-								SolicitudService.showTrabajadorDialog();
-							}, 100);
 						});
 				};
 
-				function acceptTrabajador() {
-					alert('Trabajador Aceptado!');
-					$state.go('estado');
-				};
+				function selectSolicitud(solicitud){
+					UIService.showLoadingScreen('Cargando...');
+
+					vm.currentService = solicitud;
+
+					$timeout(function(){
+						UIService.hideLoadingScreen();
+					}, 2000);
+
+					$timeout(function(){
+						SolicitudService.showSolicitudDialog();
+					}, 3000);
+				}
 			};
 
 			HomeController.$inject = ngDependencies;

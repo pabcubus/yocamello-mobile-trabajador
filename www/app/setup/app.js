@@ -15,33 +15,32 @@
 				'zSchema',
 
 				// Services
-				'app/services/HelperService',
-				'app/services/GoogleMapsService',
-				'app/services/SessionService',
-				'app/services/MenuService',
-				'app/services/UIService',
-				'app/services/SolicitudService',
-				'app/services/SchemaService',
+				'../app/services/HelperService',
+				'../app/services/GoogleMapsService',
+				'../app/services/SessionService',
+				'../app/services/MenuService',
+				'../app/services/UIService',
+				'../app/services/SolicitudService',
+				'../app/services/SchemaService',
 
 				// Controllers for components
-				'app/components/loading/js/LoadingController',
-				'app/components/trabajador/js/TrabajadorController',
+				'../app/components/loading/js/LoadingController',
+				'../app/components/trabajador/js/TrabajadorController',
+				'../app/components/solicitud/js/SolicitudController',
 
 				// Directives and Components
-				'app/components/loading/js/LoadingComponent',
-				'app/components/trabajador/js/TrabajadorComponent',
+				'../app/components/loading/js/LoadingComponent',
+				'../app/components/trabajador/js/TrabajadorComponent',
+				'../app/components/solicitud/js/SolicitudComponent',
 
 				// Controllers
-				'app/AppController',
-				'app/screens/home/js/HomeController',
-				'app/screens/login/js/LoginController',
-				'app/screens/estado/js/EstadoController',
-				'app/screens/perfil/js/PerfilController',
-				'app/screens/terminado/js/TerminadoController',
+				'../app/AppController',
+				'../app/screens/home/js/HomeController',
+				'../app/screens/login/js/LoginController',
 
 				// ConfigServices
-				'app/setup/runConfig',
-				'app/setup/routesConfig'
+				'../app/setup/runConfig',
+				'../app/setup/routesConfig'
 			],
 			function(
 				ng,
@@ -69,18 +68,17 @@
 				// Controllers for Directives and Components
 				LoadingController,
 				TrabajadorController,
+				SolicitudController,
 
 				// Directives and Components
 				LoadingComponent,
 				TrabajadorComponent,
+				SolicitudComponent,
 
 				// Controllers
 				AppController,
 				HomeController,
 				LoginController,
-				EstadoController,
-				PerfilController,
-				TerminadoController,
 
 				// ConfigServices
 				runConfig,
@@ -99,18 +97,17 @@
 					// Controllers for modules
 					.controller(LoadingController.registeredName, LoadingController)
 					.controller(TrabajadorController.registeredName, TrabajadorController)
+					.controller(SolicitudController.registeredName, SolicitudController)
 
 					// Directives and Components
 					.component('loading', LoadingComponent)
 					.component('trabajador', TrabajadorComponent)
+					.component('solicitud', SolicitudComponent)
 
 					// Controllers
 					.controller(AppController.registeredName, AppController)
 					.controller(HomeController.registeredName, HomeController)
 					.controller(LoginController.registeredName, LoginController)
-					.controller(EstadoController.registeredName, EstadoController)
-					.controller(PerfilController.registeredName, PerfilController)
-					.controller(TerminadoController.registeredName, TerminadoController)
 
 					.run(runConfig)
 					.config(routesConfig);

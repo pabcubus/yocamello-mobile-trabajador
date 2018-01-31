@@ -8,118 +8,44 @@
 			var SolicitudService = function($q, $timeout, $mdDialog) {
 				var vm = this;
 
-				vm.currentTrabajador	= {};
+				vm.solicitudes	= [
+					{
+						id: 1,
+						tipo: 'Mecanico',
+						latitude: 11.009401,
+						longitude: -74.821543
+					},
+					{
+						id: 2,
+						tipo: 'Mecanico',
+						latitude: 11.010466,
+						longitude: -74.811384
+					},
+					{
+						id: 3,
+						tipo: 'Electricista',
+						latitude: 11.010466,
+						longitude: -74.811384
+					}
+				];
 
-				vm.getTrabajador		= getTrabajador;
-				vm.showTrabajadorDialog	= showTrabajadorDialog;
 				vm.getServicesAvailable	= getServicesAvailable;
+				vm.showSolicitudDialog	= showSolicitudDialog;
 
 				function getServicesAvailable() {
-					let services = [
-						{
-							id: 1,
-							estado: {
-								id: 4,
-								nombre: 'Finalizado'
-							},
-							trabajador: {
-								name: 'Jorge Perez',
-								stars: 4
-							},
-							estados: [
-								{
-									id: 1,
-									date: '2017-08-12 11:15:00',
-									estado: {
-										id: 1,
-										nombre: 'Confirmado'
-									}
-								},
-								{
-									id: 2,
-									date: '2017-08-12 11:20:00',
-									estado: {
-										id: 2,
-										nombre: 'En Alistamiento'
-									}
-								},
-								{
-									id: 3,
-									date: '2017-08-12 11:20:00',
-									estado: {
-										id: 3,
-										nombre: 'En Camino'
-									}
-								},
-								{
-									id: 4,
-									date: '2017-08-12 11:20:00',
-									estado: {
-										id: 4,
-										nombre: 'Finalizado'
-									}
-								}
-							]
-						},
-						{
-							id: 2,
-							estado: {
-								id: 3,
-								nombre: 'En Camino'
-							},
-							trabajador: {
-								name: 'Jorge Perez',
-								stars: 4
-							},
-							estados: [
-								{
-									id: 1,
-									date: '2017-08-12 11:15:00',
-									estado: {
-										id: 1,
-										nombre: 'Confirmado'
-									}
-								},
-								{
-									id: 2,
-									date: '2017-08-12 11:20:00',
-									estado: {
-										id: 2,
-										nombre: 'En Alistamiento'
-									}
-								},
-								{
-									id: 3,
-									date: '2017-08-12 11:20:00',
-									estado: {
-										id: 3,
-										nombre: 'En Camino'
-									}
-								}
-							]
-						}
-					]
-				};
-
-				function getTrabajador(ev){
-					let deferred = $q.defer();
+					let defer = $q.defer();
 
 					$timeout(function(){
-						vm.currentTrabajador = {
-							name: 'Jorge Perez',
-							stars: 4
-						};
+						defer.resolve(vm.solicitudes);
+					}, 1500);
 
-						deferred.resolve(vm.currentTrabajador);
-					}, 2000);
-
-					return deferred.promise;
+					return defer.promise;
 				};
 
-				function showTrabajadorDialog(ev){
+				function showSolicitudDialog(ev){
 					$mdDialog.show(
 						{
-							contentElement: '#trabajadorDlg',
+							contentElement: '#solicitudDlg',
 							parent: angular.element(document.body),
 							targetEvent: ev,
 							clickOutsideToClose: true

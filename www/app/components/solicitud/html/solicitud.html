@@ -1,0 +1,22 @@
+<div style="visibility: hidden">
+	<div class="md-dialog-container solicitud-wrapper" id="solicitudDlg">
+		<md-dialog>
+			<md-dialog-content>
+				<div class="md-dialog-content">
+					<h2 class="md-dialog-title">{{sc.solicitud.tipo}}</h2>
+
+					<div class="solicitud" layout="column">
+						<div layout="column" layout-align="center start">
+							<img class="solicitud-location" src="{{sc.mapa}}">
+						</div>
+					</div>
+
+					<div layout="row">
+						<md-button flex class="md-raised md-warn" ng-click="sc.acceptTrabajador()">Aceptar</md-button>
+						<md-button flex class="md-raised md-warn" ng-click="sc.cancelTrabajador()">Cancelar</md-button>
+					</div>
+				</div>
+			</md-dialog-content>
+		</md-dialog>
+	</div>
+</div>

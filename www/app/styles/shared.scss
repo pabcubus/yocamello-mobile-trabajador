@@ -25,3 +25,20 @@ input{
 .yc-center-text{
 	text-align: center;
 }
+
+.yc-md-switch-big{
+	.md-container{
+		height: 35px;
+		width: 50px;
+		
+		.md-bar{
+			width: 45px;
+			height: 25px;
+			border-radius: 15px;
+		}
+		.md-thumb{
+			height: 30px;
+			width: 30px;
+		}
+	}
+}
