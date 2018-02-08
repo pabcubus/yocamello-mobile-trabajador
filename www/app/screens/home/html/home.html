@@ -5,13 +5,18 @@
 		</md-switch>
 	</div>
 
-	<md-list flex>
-		<md-list-item class="md-3-line" ng-repeat="serv in hc.services" ng-click="hc.selectSolicitud(serv)">
-			<div class="md-list-item-text" layout="column">
-				<h3>{{ serv.tipo }}</h3>
-			</div>
-		</md-list-item>
-	</md-list>
+	<div class="catalogo">
+		<md-list flex>
+			<md-subheader class="md-no-sticky">Catalogo de Servicios</md-subheader>
+			<md-list-item class="md-2-line" ng-repeat="serv in hc.servicesAvailable">
+				<div class="md-list-item-text" layout="column">
+					<h3>{{ serv.tipo }}</h3>
+					<p>{{ serv.precio | currency : "$ " : 0 }}</p>
+				</div>
+			</md-list-item>
+		</md-list>
+	</div>
+
 
 	<solicitud solicitud="hc.currentService"></solicitud>
 </div>

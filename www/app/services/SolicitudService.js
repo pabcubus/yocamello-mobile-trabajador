@@ -8,47 +8,66 @@
 			var SolicitudService = function($q, $timeout, $mdDialog) {
 				var vm = this;
 
-				vm.solicitudes	= [
+				vm.servicesAvailable	= [
 					{
 						id: 1,
 						tipo: 'Mecanico',
-						latitude: 11.009401,
-						longitude: -74.821543
-					},
-					{
-						id: 2,
-						tipo: 'Mecanico',
-						latitude: 11.010466,
-						longitude: -74.811384
+						precio: 50000
 					},
 					{
 						id: 3,
-						tipo: 'Electricista',
-						latitude: 11.010466,
-						longitude: -74.811384
+						precio: 30000,
+						tipo: 'Electricista'
 					}
 				];
 
 				vm.getServicesAvailable	= getServicesAvailable;
+				vm.getServices			= getServices;
 				vm.showSolicitudDialog	= showSolicitudDialog;
 
 				function getServicesAvailable() {
 					let defer = $q.defer();
 
 					$timeout(function(){
-						defer.resolve(vm.solicitudes);
+						defer.resolve(vm.servicesAvailable);
 					}, 1500);
 
 					return defer.promise;
 				};
 
-				function showSolicitudDialog(ev){
+				function getServices(){
+					let defer = $q.defer();
+
+					$timeout(function(){
+						defer.resolve([
+							{
+								id: 1,
+								latitude: 11.009401,
+								longitude: -74.821543,
+								servicio: {
+									id: 1,
+									tipo: 'Mecanico',
+									precio: 50000
+								},
+								cliente:{
+									id: 1,
+									name: 'Pablo',
+									lastname: 'Bassil',
+									email: 'pabcubus@gmail.com'
+								}
+							}
+						]);
+					}, 1500);
+
+					return defer.promise;
+				}
+
+				function showSolicitudDialog(){
 					$mdDialog.show(
 						{
-							contentElement: '#solicitudDlg',
-							parent: angular.element(document.body),
-							targetEvent: ev,
-							clickOutsideToClose: true
+							'contentElement': '#solicitudDlg',
+							'parent': angular.element(document.body),
+							'clickOutsideToClose': true
 						}
 					);
 				};

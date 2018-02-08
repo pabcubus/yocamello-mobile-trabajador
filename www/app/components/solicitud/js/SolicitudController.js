@@ -13,7 +13,7 @@
 
 				vm.$onChanges = function (changes) {
 					if (lodash.has(changes, 'solicitud')) {
-						vm.solicitud	= changes.solicitud.currentValue;
+						vm.solicitud	= changes.solicitud.currentValue[0];
 						_initMapa();
 					}
 				}

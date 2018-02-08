@@ -1,6 +1,11 @@
 .home {
-	.service{
-		margin: 5px;
-		background-color: grey;
+	.catalogo{
+		.md-subheader{
+			padding: 0;
+
+			.md-subheader-inner{
+				padding: 0;
+			}
+		}
 	}
 }

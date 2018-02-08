@@ -9,18 +9,15 @@ module.exports = function(grunt) {
 				sourceMap: false
 			},
 			dist: {
-				files: {
-					'app/styles/shared.css'		: 'app/styles/shared.scss',
-
-					'app/styles/worker.css'		: 'app/styles/worker.scss',
-
-					'app/styles/login.css'		: 'app/styles/login.scss',
-					'app/styles/home.css'		: 'app/styles/home.scss',
-					'app/styles/estado.css'		: 'app/styles/estado.scss',
-					'app/styles/perfil.css'		: 'app/styles/perfil.scss',
-					'app/styles/terminado.css'	: 'app/styles/terminado.scss',
-					'app/styles/solicitud.css'	: 'app/styles/solicitud.scss'
-				}
+				files: [
+					{
+					expand: true,
+					cwd: 'app/styles',
+					src: ['*.scss', '!*.css'],
+					dest: 'app/styles',
+					ext: '.css'
+					}
+				]
 			}
 		},
 		shell: {
@@ -53,8 +50,8 @@ module.exports = function(grunt) {
 			}
 		},
 		concurrent: {
-			serve: ['shell:serve', 'watch:sass', 'watch:cssmin'],
-			serve_prod: ['shell:serve_prod', 'watch:sass', 'watch:cssmin']
+			serve: ['shell:serve', 'watch:sass:dist', 'watch:cssmin'],
+			serve_prod: ['shell:serve_prod', 'watch:sass:dist', 'watch:cssmin']
 		}
 	});
 
@@ -62,14 +59,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 	grunt.registerTask('serve', [
-		'sass',
+		'sass:dist',
 		'cssmin',
 		'concurrent:serve'
-	]);
-
-	grunt.registerTask('serve_prod', [
-		'sass',
-		'cssmin',
-		'concurrent:serve_prod'
 	]);
 };

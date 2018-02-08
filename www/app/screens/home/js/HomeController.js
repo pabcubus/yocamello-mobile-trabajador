@@ -9,41 +9,35 @@
 				var vm					= this;
 
 				vm.inService			= true;
-				vm.services				= [];
+				vm.servicesAvailable	= [];
 				vm.currentService		= {};
-
-				vm.selectSolicitud		= selectSolicitud;
 
 				$scope.$on('$viewContentLoaded', function(){
 					_init();
 				})
 
 				function _init() {
-					UIService.showLoadingScreen('Buscando...');
+					UIService.showLoadingScreen('Cargando servicios disponibles...');
 
 					SolicitudService.getServicesAvailable()
 						.then(function(data){
-							vm.services = data;
+							vm.servicesAvailable = data;
 						})
 						.catch()
 						.finally(function(){
 							UIService.hideLoadingScreen();
 						});
+
+					SolicitudService.getServices()
+						.then(function(data){
+							vm.currentService = data;
+							
+							$timeout(function(){
+								SolicitudService.showSolicitudDialog();
+							}, 5000);
+						});
+
 				};
-
-				function selectSolicitud(solicitud){
-					UIService.showLoadingScreen('Cargando...');
-
-					vm.currentService = solicitud;
-
-					$timeout(function(){
-						UIService.hideLoadingScreen();
-					}, 2000);
-
-					$timeout(function(){
-						SolicitudService.showSolicitudDialog();
-					}, 3000);
-				}
 			};
 
 			HomeController.$inject = ngDependencies;
