@@ -25,18 +25,17 @@
 
 				// Controllers for components
 				'../app/components/loading/js/LoadingController',
-				'../app/components/trabajador/js/TrabajadorController',
 				'../app/components/solicitud/js/SolicitudController',
 
 				// Directives and Components
 				'../app/components/loading/js/LoadingComponent',
-				'../app/components/trabajador/js/TrabajadorComponent',
 				'../app/components/solicitud/js/SolicitudComponent',
 
 				// Controllers
 				'../app/AppController',
 				'../app/screens/home/js/HomeController',
 				'../app/screens/login/js/LoginController',
+				'../app/screens/perfil/js/PerfilController',
 
 				// ConfigServices
 				'../app/setup/runConfig',
@@ -67,18 +66,17 @@
 
 				// Controllers for Directives and Components
 				LoadingController,
-				TrabajadorController,
 				SolicitudController,
 
 				// Directives and Components
 				LoadingComponent,
-				TrabajadorComponent,
 				SolicitudComponent,
 
 				// Controllers
 				AppController,
 				HomeController,
 				LoginController,
+				PerfilController,
 
 				// ConfigServices
 				runConfig,
@@ -96,18 +94,17 @@
 
 					// Controllers for modules
 					.controller(LoadingController.registeredName, LoadingController)
-					.controller(TrabajadorController.registeredName, TrabajadorController)
 					.controller(SolicitudController.registeredName, SolicitudController)
 
 					// Directives and Components
 					.component('loading', LoadingComponent)
-					.component('trabajador', TrabajadorComponent)
 					.component('solicitud', SolicitudComponent)
 
 					// Controllers
 					.controller(AppController.registeredName, AppController)
 					.controller(HomeController.registeredName, HomeController)
 					.controller(LoginController.registeredName, LoginController)
+					.controller(PerfilController.registeredName, PerfilController)
 
 					.run(runConfig)
 					.config(routesConfig);

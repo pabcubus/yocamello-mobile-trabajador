@@ -14,7 +14,9 @@
 				vm.$onChanges = function (changes) {
 					if (lodash.has(changes, 'solicitud')) {
 						vm.solicitud	= changes.solicitud.currentValue[0];
-						_initMapa();
+
+						if (!lodash.isUndefined(vm.solicitud) && !lodash.isNull(vm.solicitud))
+							_initMapa();
 					}
 				}
 
